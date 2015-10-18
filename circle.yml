@@ -6,6 +6,9 @@ deployment:
   release:
     branch: master
     commands:
+       - npm prune --production
+       - npm dedupe
        - npm version $(NPM_RELEASE-patch)
        - npm i -g publish-release npv
-       - NPM_VERSION=$(npv) publish-release --token $GITHUB_TOKEN --owner oroce --repo circleci-test --tag $NPM_VERSION --assets release.tar.gz --notes "released $NPM_VERSION"
+       - RELEASE_FILE=circle-ci-$(npv).tgz tar -cvzf /tmp/$RELEASE_PACK --exclude .git --exclude $RELEASE_FILE --warning=no-file-changed .
+       - NPM_VERSION=$(npv) publish-release --token $GITHUB_TOKEN --owner oroce --repo circleci-test --tag $NPM_VERSION --assets release.tgz --notes "released $NPM_VERSION" --name "$NPM_VERSION"
