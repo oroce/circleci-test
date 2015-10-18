@@ -1,3 +1,11 @@
 machine:
   node:
     version: 4.2.1
+
+deployment:
+  release:
+    branch: master
+    commands:
+       - npm version $(NPM_RELEASE-patch)
+       - npm i -g publish-release npv
+       - NPM_VERSION=$(npv) publish-release --token $GITHUB_TOKEN --owner oroce --repo circleci-test --tag $NPM_VERSION --assets release.tar.gz --notes "released $NPM_VERSION"
