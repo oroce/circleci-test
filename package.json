@@ -1,0 +1,23 @@
+{
+  "name": "circleci-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r should '*.spec.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oroce/circleci-test.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oroce/circleci-test/issues"
+  },
+  "homepage": "https://github.com/oroce/circleci-test#readme",
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "should": "^7.1.0"
+  }
+}
