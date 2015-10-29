@@ -14,4 +14,4 @@ deployment:
        - tar cvzp --exclude '.git' --exclude "release/circle-ci-$(npv).tgz" --warning=no-file-changed -f "release/circle-ci-$(npv).tgz" .
        - curl -L https://github.com/progrium/gh-release/releases/download/v2.2.0/gh-release_2.2.0_linux_x86_64.tgz | tar zx
        - ls -lha ./release
-       - ./gh-release create oroce/circleci-test v$(npv)
+       - ./gh-release create oroce/circleci-test $(npv)
