@@ -9,7 +9,9 @@ deployment:
        - npm prune --production
        - npm dedupe
        - npm version $(NPM_RELEASE-patch)
+       - npm i -g npv
        - mkdir -p release
        - RELEASE_FILE=release/circle-ci-$(npv).tgz tar -cvzf $RELEASE_FILE --exclude .git --exclude $RELEASE_FILE --warning=no-file-changed .
        - curl -L https://github.com/progrium/gh-release/releases/download/v2.2.0/gh-release_2.2.0_linux_x86_64.tgz | tar zx
-       - ./gh-release create oroce/circleci-test $(npv)
+       - ls -lha ./release
+       - ./gh-release create oroce/circleci-test v$(npv)
